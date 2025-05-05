@@ -76,50 +76,37 @@ If the feature `debug-embed` is enabled or the binary compiled in release mode a
 Otherwise the files are listed from the file system on each call.
 
 ## Attributes
-### `prefix`
+`prefix`
 
 You can add `#[prefix = "my_prefix/"]` to the `RustEmbed` struct to add a prefix
 to all of the file paths. This prefix will be required on `get` calls, and will
 be included in the file paths returned by `iter`.
 
-### `metadata_only`
+`metadata_only`
 
 You can add `#[metadata_only = true]` to the `RustEmbed` struct to exclude file contents from the
 binary. Only file paths and metadata will be embedded.
 
-### `allow_missing`
+`allow_missing`
 
 You can add `#[allow_missing = true]` to the `RustEmbed` struct to allow the embedded folder to be missing.
 In that case, RustEmbed will be empty.
 
 ## Features
 
-### `debug-embed`
-
-Always embed the files in the binary, even in debug mode.
-
-### `interpolate-folder-path`
-
-Allow environment variables to be used in the `folder` path. Example:
-
+* `debug-embed`: Always embed the files in the binary, even in debug mode.
+* `interpolate-folder-path`: Allow environment variables to be used in the `folder` path.
 ```rust
 #[derive(Embed)]
 #[folder = "$CARGO_MANIFEST_DIR/foo"]
 struct Asset;
 ```
-
 This will pull the `foo` directory relative to your `Cargo.toml` file.
 
-### `compression`
+* `compression`: Compress each file when embedding into the binary. Compression is done via [include-flate](https://crates.io/crates/include-flate).
 
-Compress each file when embedding into the binary. Compression is done via [include-flate](https://crates.io/crates/include-flate).
-
-### `include-exclude`
-Filter files to be embedded with multiple `#[include = "*.txt"]` and `#[exclude = "*.jpg"]` attributes. 
-Matching is done on relative file paths, via [globset](https://crates.io/crates/globset).
-`exclude` attributes have higher priority than `include` attributes.
-Example:
-
+* `include-exclude`: Filter files to be embedded with multiple `#[include = "*.txt"]` and `#[exclude = "*.jpg"]` attributes. 
+Matching is done on relative file paths, via [globset](https://crates.io/crates/globset). `exclude` attributes have higher priority than `include` attributes.
 ```rust
 use rust_embed::Embed;
 
@@ -131,8 +118,7 @@ use rust_embed::Embed;
 struct Asset;
 ```
 
-### `deterministic-timestamps`
-Overwrite embedded files' timestamps with `0` to preserve deterministic builds with `debug-embed` or release mode
+* `deterministic-timestamps`: Overwrite embedded files' timestamps with `0` to preserve deterministic builds with `debug-embed` or release mode
 
 ## Usage
 
