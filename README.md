@@ -59,35 +59,32 @@ pub struct Metadata {
 }
 ```
 
-### `get(file_path: &str) -> Option<rust_embed::EmbeddedFile>`
+## Methods
+* `get(file_path: &str) -> Option<rust_embed::EmbeddedFile>`
 
 Given a relative path from the assets folder returns the `EmbeddedFile` if found.
-
 If the feature `debug-embed` is enabled or the binary compiled in release mode the bytes have been embeded in the binary and a `Option<rust_embed::EmbeddedFile>` is returned.
-
 Otherwise the bytes are read from the file system on each call and a `Option<rust_embed::EmbeddedFile>` is returned.
 
-### `iter()`
+* `iter()`
 
 Iterates the files in this assets folder.
-
 If the feature `debug-embed` is enabled or the binary compiled in release mode a static array to the list of relative paths to the files is returned.
-
 Otherwise the files are listed from the file system on each call.
 
 ## Attributes
-`prefix`
+* `prefix`
 
 You can add `#[prefix = "my_prefix/"]` to the `RustEmbed` struct to add a prefix
 to all of the file paths. This prefix will be required on `get` calls, and will
 be included in the file paths returned by `iter`.
 
-`metadata_only`
+* `metadata_only`
 
 You can add `#[metadata_only = true]` to the `RustEmbed` struct to exclude file contents from the
 binary. Only file paths and metadata will be embedded.
 
-`allow_missing`
+* `allow_missing`
 
 You can add `#[allow_missing = true]` to the `RustEmbed` struct to allow the embedded folder to be missing.
 In that case, RustEmbed will be empty.
@@ -95,16 +92,14 @@ In that case, RustEmbed will be empty.
 ## Features
 
 * `debug-embed`: Always embed the files in the binary, even in debug mode.
-* `interpolate-folder-path`: Allow environment variables to be used in the `folder` path.
+* `compression`: Compress each file when embedding into the binary. Compression is done via [include-flate](https://crates.io/crates/include-flate).
+* `deterministic-timestamps`: Overwrite embedded files' timestamps with `0` to preserve deterministic builds with `debug-embed` or release mode.
+* `interpolate-folder-path`: Allow environment variables to be used in the `folder` path. This will pull the `foo` directory relative to your `Cargo.toml` file.
 ```rust
 #[derive(Embed)]
 #[folder = "$CARGO_MANIFEST_DIR/foo"]
 struct Asset;
 ```
-This will pull the `foo` directory relative to your `Cargo.toml` file.
-
-* `compression`: Compress each file when embedding into the binary. Compression is done via [include-flate](https://crates.io/crates/include-flate).
-
 * `include-exclude`: Filter files to be embedded with multiple `#[include = "*.txt"]` and `#[exclude = "*.jpg"]` attributes. 
 Matching is done on relative file paths, via [globset](https://crates.io/crates/globset). `exclude` attributes have higher priority than `include` attributes.
 ```rust
@@ -117,8 +112,6 @@ use rust_embed::Embed;
 #[exclude = "*.txt"]
 struct Asset;
 ```
-
-* `deterministic-timestamps`: Overwrite embedded files' timestamps with `0` to preserve deterministic builds with `debug-embed` or release mode
 
 ## Usage
 
