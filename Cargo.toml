@@ -1,14 +1,14 @@
 [package]
 name = "rust-embed"
-version = "8.7.0"
+version = "8.7.1"
 description = "Rust Custom Derive Macro which loads files into the rust binary at compile time during release and loads the file from the fs during dev"
-readme = "readme.md"
+readme = "README.md"
 documentation = "https://docs.rs/rust-embed"
 repository = "https://git.sr.ht/~pyrossh/rust-embed"
 license = "MIT"
 keywords = ["http", "rocket", "static", "web", "server"]
 categories = ["web-programming", "filesystem"]
-authors = ["pyros2097 <pyros2097@gmail.com>"]
+authors = ["pyrossh"]
 edition = "2018"
 rust-version = "1.70.0"
 
@@ -107,10 +107,6 @@ deterministic-timestamps = ["rust-embed-impl/deterministic-timestamps"]
 
 
 [badges]
-appveyor = { repository = "pyros2097/rust-embed" }
-travis-ci = { repository = "pyros2097/rust-embed" }
-is-it-maintained-issue-resolution = { repository = "pyros2097/rust-embed" }
-is-it-maintained-open-issues = { repository = "pyros2097/rust-embed" }
 maintenance = { status = "passively-maintained" }
 
 [workspace]

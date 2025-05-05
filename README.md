@@ -1,4 +1,4 @@
-## Rust Embed [![Build Status](https://github.com/pyros2097/rust-embed/workflows/Test/badge.svg)](https://github.com/pyros2097/rust-embed/actions?query=workflow%3ATest) [![crates.io](https://img.shields.io/crates/v/rust-embed.svg)](https://crates.io/crates/rust-embed)
+## Rust Embed [![crates.io](https://img.shields.io/crates/v/rust-embed.svg)](https://crates.io/crates/rust-embed)
 
 Rust Custom Derive Macro which loads files into the rust binary at compile time during release and loads the file from the fs during dev.
 
@@ -112,11 +112,11 @@ This will pull the `foo` directory relative to your `Cargo.toml` file.
 
 ### `compression`
 
-Compress each file when embedding into the binary. Compression is done via [`include-flate`].
+Compress each file when embedding into the binary. Compression is done via [include-flate](https://crates.io/crates/include-flate).
 
 ### `include-exclude`
 Filter files to be embedded with multiple `#[include = "*.txt"]` and `#[exclude = "*.jpg"]` attributes. 
-Matching is done on relative file paths, via [`globset`].
+Matching is done on relative file paths, via [globset](https://crates.io/crates/globset).
 `exclude` attributes have higher priority than `include` attributes.
 Example:
 
@@ -195,12 +195,25 @@ Note: To run the [salvo](https://github.com/salvo-rs/salvo) example:
 
 ## Testing
 
-debug: `cargo test --test lib`
-
-release: `cargo test --test lib --release`
-
-Go Rusketeers!
-The power is yours!
-
-[`include-flate`]: https://crates.io/crates/include-flate
-[`globset`]: https://crates.io/crates/globset
+```sh
+cargo test --test lib
+cargo test --test lib --features "debug-embed"
+cargo test --test lib --features "compression" --release
+cargo test --test mime_guess --features "mime-guess"
+cargo test --test mime_guess --features "mime-guess" --release
+cargo test --test interpolated_path --features "interpolate-folder-path"
+cargo test --test interpolated_path --features "interpolate-folder-path" --release
+cargo test --test custom_crate_path
+cargo test --test custom_crate_path --release
+cargo build --example basic
+cargo build --example rocket --features rocket
+cargo build --example actix --features actix
+cargo build --example axum --features axum-ex
+cargo build --example warp --features warp-ex
+cargo test --test lib --release
+cargo build --example basic --release
+cargo build --example rocket --features rocket --release
+cargo build --example actix --features actix --release
+cargo build --example axum --features axum-ex --release
+cargo build --example warp --features warp-ex --release
+```
