@@ -161,37 +161,16 @@ fn main() {
 
 ## Examples
 
-To run the example in dev mode where it reads from the fs,
-
-`cargo run --example basic`
-
-To run the example in release mode where it reads from binary,
-
-`cargo run --example basic --release`
-
-Note: To run the [actix-web](https://github.com/actix/actix-web) example:
-
-`cargo run --example actix --features actix`
-
-Note: To run the [rocket](https://github.com/SergioBenitez/Rocket) example:
-
-`cargo run --example rocket --features rocket`
-
-Note: To run the [warp](https://github.com/seanmonstar/warp) example:
-
-`cargo run --example warp --features warp-ex`
-
-Note: To run the [axum](https://github.com/tokio-rs/axum) example:
-
-`cargo run --example axum --features axum-ex`
-
-Note: To run the [poem](https://github.com/poem-web/poem) example:
-
-`cargo run --example poem --features poem-ex`
-
-Note: To run the [salvo](https://github.com/salvo-rs/salvo) example:
-
-`cargo run --example salvo --features salvo-ex`
+```sh
+cargo run --example basic #  dev mode where it reads from the fs
+cargo run --example basic --release # release mode where it reads from binary
+cargo run --example actix --features actix # https://github.com/actix/actix-web
+cargo run --example rocket --features rocket # https://github.com/SergioBenitez/Rocket
+cargo run --example warp --features warp-ex # https://github.com/seanmonstar/warp
+cargo run --example axum --features axum-ex # https://github.com/tokio-rs/axum
+cargo run --example poem --features poem-ex # https://github.com/poem-web/poem
+cargo run --example salvo --features salvo-ex # https://github.com/salvo-rs/salvo
+```
 
 ## Testing
 
