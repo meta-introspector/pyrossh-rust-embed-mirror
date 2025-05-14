@@ -7,9 +7,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 Thanks to [Mark Drobnak](https://github.com/AzureMarker) for the changelog.
 
+## [8.7.2] - 2025-05-14
+
+ - Update repo links to sub-packages
+
 ## [8.7.1] - 2025-05-05
 
- - Update documentation and links
+ - Update documentation and repo links
 
 ## [8.7.0] - 2025-04-10
 
