@@ -109,5 +109,5 @@ deterministic-timestamps = ["rust-embed-impl/deterministic-timestamps"]
 [badges]
 maintenance = { status = "passively-maintained" }
 
-[workspace]
-members = ["impl", "utils"]
+#[workspace]
+#members = ["impl", "utils"]
